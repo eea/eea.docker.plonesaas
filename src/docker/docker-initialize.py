@@ -19,13 +19,13 @@ class Environment(object):
         self.postgres_user = self.env.get("RELSTORAGE_USER", None)
         self.postgres_password = self.env.get("RELSTORAGE_PASS", None)
 
-        self.keep_history = True
-        if self.env.get('RELSTORAGE_KEEP_HISTORY', 'true').lower() in ('false', 'no', '0'):
-            self.keep_history = False
+        self.keep_history = False
+        if self.env.get('RELSTORAGE_KEEP_HISTORY', 'false').lower() in ('true', 'yes', 'y', '1'):
+            self.keep_history = True
 
         mode = self.env.get('ZOPE_MODE', 'standalone')
         conf = 'zope.conf'
-        if mode == 'zeoserver':
+        if mode == 'zeo':
             conf = 'zeo.conf'
         conf = '/plone/instance/parts/%s/etc/%s' % (mode, conf)
         if not os.path.exists(conf):
@@ -116,7 +116,7 @@ class Environment(object):
     def zope_log(self):
         """ Zope logging
         """
-        if self.mode == "zeoserver":
+        if self.mode == "zeo":
             return
 
         self.setup_graylog()
@@ -175,9 +175,7 @@ class Environment(object):
         """ RelStorage keep-history
         """
         if self.keep_history:
-            return
-
-        self.conf = self.conf.replace('keep-history true', 'keep-history false')
+            self.conf = self.conf.replace('keep-history false', 'keep-history true')
 
     def finish(self):
         conf = self.conf
