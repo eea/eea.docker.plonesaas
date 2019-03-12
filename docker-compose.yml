@@ -67,9 +67,10 @@ services:
       TZ: "Europe/Bucharest"
 
   elastic:
-    image: eeacms/elastic:6.6-1.0
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
     environment:
       cluster.name: "plone"
+      discovery.type: "single-node"
       ES_JAVA_OPTS: "-Xms512m -Xmx512m"
       TZ: "Europe/Bucharest"
 
