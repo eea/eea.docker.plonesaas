@@ -1,7 +1,9 @@
-# Plone 5 with RelStorage, Memcached, Async, Graylog and Sentry support
+# Plone 5 with RelStorage, RestAPI, ElasticSearch, Memcached, Async, Graylog and Sentry support
 
 Plone 5 with built-in support for:
 * RelStorage
+* RestAPI
+* ElasticSearch
 * Memcached
 * zc.async
 * Graylog

@@ -12,6 +12,7 @@ services:
       BACKENDS_PORT: "8080"
       BACKENDS: "plone"
       DNS_ENABLED: "True"
+      TZ: "Europe/Bucharest"
 
   plone:
     image: avoinea/plone
@@ -21,6 +22,7 @@ services:
     - postfix
     environment:
       ZOPE_MODE: "rel_client"
+      TZ: "Europe/Bucharest"
     volumes:
     - blobs:/data/blobstorage
 
@@ -32,11 +34,14 @@ services:
     - postfix
     environment:
       ZOPE_MODE: "rel_async"
+      TZ: "Europe/Bucharest"
     volumes:
     - blobs:/data/blobstorage
 
   postgres:
     image: eeacms/postgres:9.6-3.5
+    ports:
+    - 5432:5432
     environment:
       POSTGRES_DBNAME: "datafs zasync"
       POSTGRES_DBUSER: "zope"
@@ -61,6 +66,12 @@ services:
       MTP_HOST: "avoinea.com"
       TZ: "Europe/Bucharest"
 
+  elastic:
+    image: eeacms/elastic:6.6-1.0
+    environment:
+      cluster.name: "plone"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+      TZ: "Europe/Bucharest"
 
 volumes:
   data:
