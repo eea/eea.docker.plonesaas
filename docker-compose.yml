@@ -1,0 +1,69 @@
+version: "2"
+services:
+  haproxy:
+    image: eeacms/haproxy:1.8-1.2
+    ports:
+    - 80:8080
+    - 1936:1936
+    depends_on:
+    - plone
+    environment:
+      FRONTEND_PORT: "8080"
+      BACKENDS_PORT: "8080"
+      BACKENDS: "plone"
+      DNS_ENABLED: "True"
+
+  plone:
+    image: avoinea/plone
+    depends_on:
+    - postgres
+    - memcached
+    - postfix
+    environment:
+      ZOPE_MODE: "rel_client"
+    volumes:
+    - blobs:/data/blobstorage
+
+  async:
+    image: avoinea/plone
+    depends_on:
+    - postgres
+    - memcached
+    - postfix
+    environment:
+      ZOPE_MODE: "rel_async"
+    volumes:
+    - blobs:/data/blobstorage
+
+  postgres:
+    image: eeacms/postgres:9.6-3.5
+    environment:
+      POSTGRES_DBNAME: "datafs zasync"
+      POSTGRES_DBUSER: "zope"
+      POSTGRES_DBPASS: "zope"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      TZ: "Europe/Bucharest"
+    volumes:
+    - data:/var/lib/postgresql/data
+
+  memcached:
+    image: memcached:1.5.12
+    command:
+    - "-m"
+    - "2048"
+    environment:
+      TZ: "Europe/Bucharest"
+
+  postfix:
+    image: eeacms/postfix:2.10-3.3
+    environment:
+      MTP_HOST: "avoinea.com"
+      TZ: "Europe/Bucharest"
+
+
+volumes:
+  data:
+    driver: local
+  blobs:
+    driver: local
