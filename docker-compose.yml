@@ -40,8 +40,6 @@ services:
 
   postgres:
     image: eeacms/postgres:9.6-3.5
-    ports:
-    - 5432:5432
     environment:
       POSTGRES_DBNAME: "datafs zasync"
       POSTGRES_DBUSER: "zope"
@@ -67,15 +65,32 @@ services:
       TZ: "Europe/Bucharest"
 
   elastic:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.2
     environment:
       cluster.name: "plone"
       discovery.type: "single-node"
       ES_JAVA_OPTS: "-Xms512m -Xmx512m"
       TZ: "Europe/Bucharest"
+    volumes:
+    - elastic:/usr/share/elasticsearch/data
+
+  cerebro:
+    image: eeacms/cerebro:0.8.1
+    ports:
+    - 9000:9000
+    depends_on:
+    - elastic
+    environment:
+      TZ: "Europe/Bucharest"
+      CER_ES_URL: "http://elastic:9200"
+      CER_ES_USER: "admin"
+      CER_ES_PASSWORD: "admin"
+      CER_JAVA_OPTS: "-J-Xms150m -J-Xmx150m -J-Xss256k -J-XX:MaxMetaspaceSize=100m -J-XX:MaxMetaspaceExpansion=15m -J-XX:CompressedClassSpaceSize=10m -J-XX:ReservedCodeCacheSize=15m -J-XX:+HeapDumpOnOutOfMemoryError -J-XX:+UseCompressedOops"
 
 volumes:
   data:
     driver: local
   blobs:
+    driver: local
+  elastic:
     driver: local
