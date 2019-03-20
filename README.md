@@ -1,4 +1,4 @@
-# Plone 5 with RelStorage, RestAPI, ElasticSearch, Memcached, Async, Graylog and Sentry support
+# Plone 5 with RelStorage, RestAPI, ElasticSearch, Memcached, Async, Graylog, Sentry and more support
 
 Plone 5 with built-in support for:
 * RelStorage
@@ -8,6 +8,11 @@ Plone 5 with built-in support for:
 * zc.async
 * Graylog
 * Sentry
+* Taxonomy
+* Faceted Navigation
+* Faceted Inheritance
+* Image Cropping
+* Easy Form
 
 This image is generic, thus you can obviously re-use it within your own projects.
 
