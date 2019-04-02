@@ -3,7 +3,7 @@ services:
   haproxy:
     image: eeacms/haproxy:1.8-1.2
     ports:
-    - 80:8080
+    - 2080:8080
     - 1936:1936
     depends_on:
     - plone
@@ -12,43 +12,83 @@ services:
       BACKENDS_PORT: "8080"
       BACKENDS: "plone"
       DNS_ENABLED: "True"
-      TZ: "Europe/Bucharest"
+      TZ: "Europe/Copenhagen"
+
+  shell:
+    # image: eeacms/eea.docker.plonesaas
+    build: .
+    depends_on:
+      - memcached
+      - postfix
+      - zeo
+      # - postgres
+      # ZOPE_MODE: "zeo_client"
+    environment:
+      ZOPE_MODE: "zeo_async"
+      TZ: "Europe/Copenhagen"
+    # command: bash -c "tail -f /dev/null"
+    tty: true
+    stdin_open: true
+    command: cat
+    ports:
+    - 3080:8080
+    # volumes:
+    # - blobs:/data/blobstorage
+
 
   plone:
-    image: avoinea/plone
+    # image: eeacms/eea.docker.plonesaas
+    build: .
     depends_on:
-    - postgres
+      - memcached
+      - postfix
+      - zeo
+      # - postgres
+    environment:
+      ZOPE_MODE: "zeo_client"
+      TZ: "Europe/Copenhagen"
+    # volumes:
+    # - blobs:/data/blobstorage
+
+  zeo:
+    # image: eeacms/eea.docker.plonesaas
+    build: .
+    depends_on:
     - memcached
     - postfix
+    # - postgres
     environment:
-      ZOPE_MODE: "rel_client"
-      TZ: "Europe/Bucharest"
+      ZOPE_MODE: "zeo"
+      TZ: "Europe/Copenhagen"
     volumes:
-    - blobs:/data/blobstorage
+      - data:/data
+      # - blobs:/data/blobstorage
 
   async:
-    image: avoinea/plone
+    # image: avoinea/plone
+    # image: eeacms/eea.docker.plonesaas
+    build: .
     depends_on:
-    - postgres
     - memcached
     - postfix
+    # - postgres
     environment:
-      ZOPE_MODE: "rel_async"
-      TZ: "Europe/Bucharest"
-    volumes:
-    - blobs:/data/blobstorage
+      ZOPE_MODE: "zeo_async"
+      TZ: "Europe/Copenhagen"
+    # volumes:
+    # - blobs:/data/blobstorage
 
-  postgres:
-    image: eeacms/postgres:9.6-3.5
-    environment:
-      POSTGRES_DBNAME: "datafs zasync"
-      POSTGRES_DBUSER: "zope"
-      POSTGRES_DBPASS: "zope"
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
-      TZ: "Europe/Bucharest"
-    volumes:
-    - data:/var/lib/postgresql/data
+  # postgres:
+  #   image: eeacms/postgres:9.6-3.5
+  #   environment:
+  #     POSTGRES_DBNAME: "datafs zasync"
+  #     POSTGRES_DBUSER: "zope"
+  #     POSTGRES_DBPASS: "zope"
+  #     POSTGRES_USER: "postgres"
+  #     POSTGRES_PASSWORD: "postgres"
+  #     TZ: "Europe/Bucharest"
+  #   volumes:
+  #   - data:/var/lib/postgresql/data
 
   memcached:
     image: memcached:1.5.12
@@ -64,33 +104,33 @@ services:
       MTP_HOST: "avoinea.com"
       TZ: "Europe/Bucharest"
 
-  elastic:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.2
-    environment:
-      cluster.name: "plone"
-      discovery.type: "single-node"
-      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
-      TZ: "Europe/Bucharest"
-    volumes:
-    - elastic:/usr/share/elasticsearch/data
-
-  cerebro:
-    image: eeacms/cerebro:0.8.1
-    ports:
-    - 9000:9000
-    depends_on:
-    - elastic
-    environment:
-      TZ: "Europe/Bucharest"
-      CER_ES_URL: "http://elastic:9200"
-      CER_ES_USER: "admin"
-      CER_ES_PASSWORD: "admin"
-      CER_JAVA_OPTS: "-J-Xms150m -J-Xmx150m -J-Xss256k -J-XX:MaxMetaspaceSize=100m -J-XX:MaxMetaspaceExpansion=15m -J-XX:CompressedClassSpaceSize=10m -J-XX:ReservedCodeCacheSize=15m -J-XX:+HeapDumpOnOutOfMemoryError -J-XX:+UseCompressedOops"
+  # elastic:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.2
+  #   environment:
+  #     cluster.name: "plone"
+  #     discovery.type: "single-node"
+  #     ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+  #     TZ: "Europe/Bucharest"
+  #   volumes:
+  #   - elastic:/usr/share/elasticsearch/data
+  #
+  # cerebro:
+  #   image: eeacms/cerebro:0.8.1
+  #   ports:
+  #   - 9000:9000
+  #   depends_on:
+  #   - elastic
+  #   environment:
+  #     TZ: "Europe/Bucharest"
+  #     CER_ES_URL: "http://elastic:9200"
+  #     CER_ES_USER: "admin"
+  #     CER_ES_PASSWORD: "admin"
+  #     CER_JAVA_OPTS: "-J-Xms150m -J-Xmx150m -J-Xss256k -J-XX:MaxMetaspaceSize=100m -J-XX:MaxMetaspaceExpansion=15m -J-XX:CompressedClassSpaceSize=10m -J-XX:ReservedCodeCacheSize=15m -J-XX:+HeapDumpOnOutOfMemoryError -J-XX:+UseCompressedOops"
 
 volumes:
   data:
     driver: local
-  blobs:
-    driver: local
-  elastic:
-    driver: local
+  # blobs:
+  #   driver: local
+  # elastic:
+  #   driver: local
