@@ -14,5 +14,5 @@ RUN buildDeps="build-essential libldap2-dev libsasl2-dev libssl-dev git" \
                && apt-get install -y --no-install-recommends $buildDeps
 
 COPY site.cfg /plone/instance/
-RUN gosu plone buildout -c site.cfg annotate
+
 RUN gosu plone buildout -c site.cfg
