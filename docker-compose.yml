@@ -34,7 +34,8 @@ services:
     - 3080:8080
     # volumes:
     # - blobs:/data/blobstorage
-
+    env_file:
+        ./env.secret
 
   plone:
     # image: eeacms/eea.docker.plonesaas
@@ -49,6 +50,8 @@ services:
       TZ: "Europe/Copenhagen"
     # volumes:
     # - blobs:/data/blobstorage
+    env_file:
+        ./env.secret
 
   zeo:
     # image: eeacms/eea.docker.plonesaas
@@ -61,7 +64,7 @@ services:
       ZOPE_MODE: "zeo"
       TZ: "Europe/Copenhagen"
     volumes:
-      - data:/data
+      - ./data:/data
       # - blobs:/data/blobstorage
 
   async:
