@@ -8,6 +8,7 @@ buildDeps="
   libc6-dev
   libexpat1-dev
   libjpeg-dev
+  libldap2-dev
   libmemcached-dev
   libpq-dev
   libreadline-dev
@@ -69,6 +70,12 @@ fi
 
 echo "Running: pip install pip==$PIP zc.buildout==$ZC_BUILDOUT setuptools==$SETUPTOOLS"
 pip install pip==$PIP zc.buildout==$ZC_BUILDOUT setuptools==$SETUPTOOLS
+
+echo "========================================================================="
+echo "SVN checkout products"
+echo "========================================================================="
+
+svn co https://svn.eionet.europa.eu/repositories/Zope/bundles/Eionet/trunk products
 
 echo "========================================================================="
 echo "Running buildout -c buildout.cfg"

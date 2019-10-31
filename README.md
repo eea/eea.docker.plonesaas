@@ -18,15 +18,15 @@ This image is generic, thus you can obviously re-use it within your own projects
 
 ## Supported tags and respective Dockerfile links
 
-  - [Tags](https://hub.docker.com/r/avoinea/plone/tags/)
+  - [Tags](https://hub.docker.com/r/eeacms/plonesaas/tags/)
 
 ## Base docker image
 
- - [hub.docker.com](https://hub.docker.com/r/avoinea/plone/)
+ - [hub.docker.com](https://hub.docker.com/r/eeacms/plonesaas/)
 
 ## Source code
 
-  - [github.com](http://github.com/avoinea/avoinea.docker.plone)
+  - [github.com](http://github.com/eeacms/eea.docker.plonesaas)
 
 ## Simple Usage
 
@@ -34,7 +34,7 @@ This image is generic, thus you can obviously re-use it within your own projects
 
 Now, ask for http://localhost/ in your workstation web browser and add a Plone site (default credentials `admin:admin`).
 
-See [docker-compose.yml](http://github.com/avoinea/avoinea.docker.plone) for more details and more about Plone at [plone](https://hub.docker.com/_/plone)
+See [docker-compose.yml](http://github.com/eeacms/eea.docker.plonesaas) for more details and more about Plone at [plone](https://hub.docker.com/_/plone)
 
 ## Extending this image
 
@@ -64,7 +64,7 @@ Below is an example of `site.cfg` and `Dockerfile` to build a custom version of 
 
 **Dockerfile**:
 
-    FROM avoinea/plone
+    FROM eeacms/plonesaas
 
     COPY site.cfg /plone/instance/
     RUN gosu plone buildout -c site.cfg

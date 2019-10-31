@@ -8,13 +8,3 @@ RUN mv /docker-entrypoint.sh /plone-entrypoint.sh \
 COPY src/docker/* /
 COPY src/plone/* /plone/instance/
 RUN /docker-setup.sh
-
-RUN buildDeps="build-essential libldap2-dev libsasl2-dev libssl-dev git" \
-               && apt-get update \
-               && apt-get install -y --no-install-recommends $buildDeps
-
-RUN svn co https://svn.eionet.europa.eu/repositories/Zope/bundles/Eionet/trunk products
-
-COPY site.cfg /plone/instance/
-
-RUN gosu plone buildout -c site.cfg
