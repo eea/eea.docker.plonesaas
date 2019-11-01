@@ -14,7 +14,7 @@ pipeline {
               checkout scm
               sh '''docker build -t ${BUILD_TAG,,} .'''
               sh '''TMPDIR=`pwd` clair-scanner --ip=`hostname` --clair=http://clair:6060 -t=Critical ${BUILD_TAG,,}'''
-              sh '''docker run -i --name=${BUILD_TAG,,} ${BUILD_TAG,,} fg'''
+              sh '''docker run -d --name=${BUILD_TAG,,} ${BUILD_TAG,,} fg'''
               sh '''docker run -i --rm --link=${BUILD_TAG,,}:plone --name=${BUILD_TAG,,}-test --entrypoint /plone/instance/bin/zopepy ${BUILD_TAG,,} -c "from six.moves.urllib.request import urlopen; con = urlopen('http://plone:8080'); print(con.read())"'''
             } finally {
               sh '''docker stop ${BUILD_TAG,,}'''
