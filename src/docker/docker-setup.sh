@@ -19,6 +19,7 @@ buildDeps="
   libxslt1-dev
   libz-dev
   zlib1g-dev
+  subversion
 "
 
 runDeps="
@@ -49,27 +50,6 @@ echo "========================================================================="
 
 apt-get update
 apt-get install -y --no-install-recommends $buildDeps
-
-echo "========================================================================="
-echo "Installing pip, zc.buildout and setuptools"
-echo "========================================================================="
-
-VERSION_CFG="/plone/instance/versions.cfg"
-
-if [ -z "$PIP" ]; then
-  PIP=$(cat $VERSION_CFG | grep "pip\s*=\s*" | sed 's/^.*\=\s*//g')
-fi
-
-if [ -z "$ZC_BUILDOUT" ]; then
-  ZC_BUILDOUT=$(cat $VERSION_CFG | grep "zc\.buildout\s*=\s*" | sed 's/^.*\=\s*//g')
-fi
-
-if [ -z "$SETUPTOOLS" ]; then
-  SETUPTOOLS=$(cat $VERSION_CFG | grep "setuptools\s*\=\s*" | sed 's/ *//g' | sed 's/=//g' | sed 's/[a-z]//g')
-fi
-
-echo "Running: pip install pip==$PIP zc.buildout==$ZC_BUILDOUT setuptools==$SETUPTOOLS"
-pip install pip==$PIP zc.buildout==$ZC_BUILDOUT setuptools==$SETUPTOOLS
 
 echo "========================================================================="
 echo "SVN checkout products"

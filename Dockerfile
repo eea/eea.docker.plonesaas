@@ -1,5 +1,5 @@
 FROM plone:5.1.5
-LABEL maintainer="Alin Voinea <contact@avoinea.com>"
+LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
 RUN mv /docker-entrypoint.sh /plone-entrypoint.sh \
  && mv -v versions.cfg plone-versions.cfg \
