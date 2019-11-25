@@ -35,9 +35,9 @@ pipeline {
       }
       steps {
         node(label: 'clair') {
-          withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN')]) {
+          withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN'),usernamePassword(credentialsId: 'jekinsdockerhub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
             sh '''/scan_catalog_entry.sh templates/plonesaas eeacms/plonesaas'''
-            sh '''docker run -i --rm --name="${BUILD_TAG,,}-release" -e GIT_BRANCH="$BRANCH_NAME" -e GIT_NAME="$GIT_NAME" -e GIT_TOKEN="$GITHUB_TOKEN" eeacms/gitflow'''
+            sh '''docker run -i --rm --name="${BUILD_TAG,,}-release" -e GIT_BRANCH="$BRANCH_NAME" -e GIT_NAME="$GIT_NAME" -e GIT_TOKEN="$GITHUB_TOKEN" -e DOCKERHUB_USER="$DOCKERHUB_USER" -e DOCKERHUB_PASS="$DOCKERHUB_PASS" -e DOCKERHUB_REPO="eeacms/plonesaas" -e RANCHER_CATALOG_PATHS="templates/plonesaas" eeacms/gitflow'''
           }
         }
       }
