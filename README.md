@@ -76,17 +76,4 @@ and then run
 
 ## Supported environment variables
 
-* `ZOPE_MODE` Can be `zeo`, `standalone`, `zeo_client`, `zeo_async`,  `rel_client`, `rel_async`. Default `standalone`
-* `ZOPE_THREADS` Configure zserver-threads. Default `2` (e.g.: `ZOPE_THREADS=4`)
-* `ZOPE_FAST_LISTEN` Set to `off` to defer opening of the HTTP socket until the end of the Zope startup phase. Defaults to `off` (e.g.: `ZOPE_FAST_LISTEN=on`)
-* `ZOPE_FORCE_CONNECTION_CLOSE` Set to `on` to enforce Zope to set `Connection: close header`. Default `on` (e.g.: `ZOPE_FORCE_CONNECTION_CLOSE=off`)
-* `GRAYLOG` Configure zope inside container to send logs to GrayLog. (e.g.: `GRAYLOG=logs.example.com:12201`)
-* `GRAYLOG_FACILITY` Custom GrayLog facility. Default (e.g.: `GRAYLOG_FACILITY=staging.example.com`)
-* `RELSTORAGE_HOST` Custom PostgreSQL address, `postgres` by default (e.g.: `RELSTORAGE_HOST=1.2.3.4`)
-* `RELSTORAGE_USER` Custom PostgreSQL user, `zope` by default (e.g.: `RELSTORAGE_USER=plone`)
-* `RELSTORAGE_PASS` Custom PostgreSQL password, `zope` by default (e.g.: `RELSTORAGE_PASS=secret`)
-* `RELSTORAGE_KEEP_HISTORY` history-preserving database schema, `false` by default (e.g.: `RELSTORAGE_KEEP_HISTORY=true`)
-* `SERVER_NAME` Usually the application URL without scheme (e.g.: `SERVER_NAME=staging.example.com`)
-* `ENVIRONMENT`, `SENTRY_ENVIRONMENT` Override environment. Leave empty to automatically get it from `rancher-metadata`
-* `_APP_VERSION` Your custom application version (e.g: `APP_VERSION=5.1.5-1.0`)
-* `SENTRY_DSN` Send python tracebacks to sentry.io (e.g.: `SENTRY_DSN=https://<public_key>:<secret_key>@sentry.io`)
+See [eeacms/plone supported environment variables](https://github.com/eea/eea.docker.plone#supported-environment-variables)
