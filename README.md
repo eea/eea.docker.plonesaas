@@ -76,4 +76,4 @@ and then run
 
 ## Supported environment variables
 
-See [eeacms/plone supported environment variables](https://github.com/eea/eea.docker.plone#supported-environment-variables)
+See **eeacms/plone** [supported environment variables](https://github.com/eea/eea.docker.plone#supported-environment-variables)
