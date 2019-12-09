@@ -1,0 +1,18 @@
+Fixing permissions for external /data volumes
+Using bin/standalone
+Sending logs to graylog: 'logcentral.eea.europa.eu:12201' as facilty: 'eea.docker.plone'
+
+[buildout]
+extends = develop.cfg
+develop += src/eea.facetednavigation
+eggs += eea.facetednavigation
+zcml += eea.facetednavigation-meta
+
+[plonesite]
+enabled = True
+site-id = plone
+profiles += eea.facetednavigation:universal
+
+[versions]
+eea.facetednavigation=13.3
+plone.restapi=5.0.0
