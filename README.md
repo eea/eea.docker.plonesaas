@@ -1,18 +1,14 @@
-# Plone 5 with RelStorage, RestAPI, ElasticSearch, Memcached, Async, Graylog, Sentry and more support
+# Plone 5 with RelStorage, RestAPI, Memcached, Graylog, Sentry and more support
 
 Plone 5 with built-in support for:
 * RelStorage
 * RestAPI
-* ElasticSearch
 * Memcached
-* zc.async
 * Graylog
 * Sentry
-* Taxonomy
 * Faceted Navigation
 * Faceted Inheritance
 * Image Cropping
-* Easy Form
 
 This image is generic, thus you can obviously re-use it within your own projects.
 
@@ -52,12 +48,10 @@ Below is an example of `site.cfg` and `Dockerfile` to build a custom version of 
 
     [configuration]
     eggs +=
-      eea.facetednavigation
       collective.elasticsearch
       collective.taxonomy
 
     [versions]
-    eea.facetednavigation = 11.7
     collective.elasticsearch = 3.0.2
     collective.taxonomy = 1.5.1
 
