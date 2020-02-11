@@ -71,3 +71,7 @@ and then run
 ## Supported environment variables
 
 See **eeacms/plone** [supported environment variables](https://github.com/eea/eea.docker.plone#supported-environment-variables)
+
+## Automated build
+
+See [Jenkins](https://ci.eionet.europa.eu/view/Github/job/Eionet/job/eea.pipeline.plone/)
