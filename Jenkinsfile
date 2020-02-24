@@ -31,6 +31,18 @@ pipeline {
       }
     }
 
+    stage('Manual Release') {
+      when {
+        buildingTag()
+      }
+      steps{
+        node(label: 'docker') {
+          withCredentials([string(credentialsId: 'eea-jenkins-token', variable: 'GITHUB_TOKEN')]) {
+           sh '''env'''
+           }
+        }
+      }
+    }
 
   }
 
