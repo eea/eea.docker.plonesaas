@@ -15,7 +15,6 @@ pipeline {
         node(label: 'clair') {
           script {
             try {
-              checkout scm
               sh '''docker build -t ${BUILD_TAG,,} .'''
               //sh '''TMPDIR=`pwd` clair-scanner --ip=`hostname` --clair=http://clair:6060 -t=Critical ${BUILD_TAG,,}'''
               sh '''docker run -d --name=${BUILD_TAG,,} ${BUILD_TAG,,} fg'''
