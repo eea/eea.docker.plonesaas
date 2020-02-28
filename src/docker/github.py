@@ -141,7 +141,7 @@ class Github(object):
                     self.status = 1
                     self.logger.warn("%s - %s", name, pull.get('title', '-'))
         except Exception, err:
-            self.logger.exception(err)
+            self.logger.exception("%s - %s", url, err)
 
         url = repo.get('url', '') + '/forks'
         try:
