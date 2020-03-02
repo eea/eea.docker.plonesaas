@@ -1,4 +1,5 @@
 # Plone 5 with RelStorage, RestAPI, Memcached, Graylog, Sentry and more support
+[![Build Status](https://ci.eionet.europa.eu/buildStatus/icon?job=Eionet/eea.docker.plonesaas/master)](https://ci.eionet.europa.eu/blue/organizations/jenkins/Eionet%2Feea.docker.plonesaas/activity/)
 
 Plone 5 with built-in support for:
 * RelStorage
@@ -72,6 +73,3 @@ and then run
 
 See **eeacms/plone** [supported environment variables](https://github.com/eea/eea.docker.plone#supported-environment-variables)
 
-## Automated build
-
-See [Jenkins](https://ci.eionet.europa.eu/view/Github/job/Eionet/job/eea.pipeline.plone/)
