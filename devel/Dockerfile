@@ -1,4 +1,4 @@
-FROM eeacms/plonesaas:5.2.1-18
+FROM eeacms/plonesaas:5.2.1-19
 
 COPY docker-setup.sh /
 RUN /docker-setup.sh
