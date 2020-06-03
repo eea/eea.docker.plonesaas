@@ -1,0 +1,11 @@
+name: Plone Docker Official Image
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build & Test Plone SaaS
+      run: |
+        docker build -t plonesaas:dev .
+        ./test/run.sh plonesaas:dev
