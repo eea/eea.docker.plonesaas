@@ -12,17 +12,19 @@ pipeline {
   stages {
     stage('Build & Test') {      
       steps {
-        node(label: 'clair') {
+        node(label: 'docker-host') {
           script {
             try {
               checkout scm
               sh '''docker build -t ${BUILD_TAG,,} .'''
+              sh '''hostname'''
               //sh '''TMPDIR=`pwd` clair-scanner --ip=`hostname` --clair=http://clair:6060 -t=Critical ${BUILD_TAG,,}'''
               sh '''docker run -d --name=${BUILD_TAG,,} ${BUILD_TAG,,} fg'''
-              sh '''docker run -i --rm --link=${BUILD_TAG,,}:plone --name=${BUILD_TAG,,}-test --entrypoint /plone/instance/bin/zopepy ${BUILD_TAG,,} -c "from six.moves.urllib.request import urlopen; import time; time.sleep(30); con = urlopen('http://plone:8080'); print(con.read())"'''
+              sh '''docker run -i --rm --link=${BUILD_TAG,,}:plone --name=${BUILD_TAG,,}-test --entrypoint /plone/instance/bin/zopepy ${BUILD_TAG,,} -c "from six.moves.urllib.request import urlopen; import time; time.sleep(45); con = urlopen('http://plone:8080'); print(con.read())"'''
               sh '''./test/run.sh ${BUILD_TAG,,}'''
             } finally {
-              try {
+              try {                
+                sh '''docker logs ${BUILD_TAG,,}'''
                 sh '''docker stop ${BUILD_TAG,,}'''
                 sh '''docker rm -v ${BUILD_TAG,,}'''
                 sh '''docker rmi ${BUILD_TAG,,}'''
