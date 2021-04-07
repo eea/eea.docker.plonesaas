@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#make sure all the commands are run succesfully
+set -e
+
 runDeps="
   build-essential
   silversearcher-ag
