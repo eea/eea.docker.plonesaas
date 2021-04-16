@@ -6,6 +6,10 @@ buildDeps="
   libldap2-dev
   libsasl2-dev
   libssl-dev
+  silversearcher-ag
+  tmux
+  mc
+  procps
 "
 
 runDeps="
@@ -23,10 +27,10 @@ apt-get update
 apt-get install -y --no-install-recommends $buildDeps
 
 echo "========================================================================="
-echo "Running buildout -c buildout.cfg"
+echo "Running buildout -c site.cfg"
 echo "========================================================================="
 
-buildout -c buildout.cfg
+buildout -c site.cfg
 
 echo "========================================================================="
 echo "Unininstalling $buildDeps"
