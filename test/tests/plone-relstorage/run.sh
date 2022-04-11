@@ -7,7 +7,7 @@ image="$1"
 
 PLONE_TEST_SLEEP=6
 PLONE_TEST_TRIES=30
-POSTGRES_IMAGE="eeacms/postgres:9.6-3.5"
+POSTGRES_IMAGE="eeacms/postgres:10.20-3.7"
 
 # Start PostgreSQL server
 zname="postgres-container-$RANDOM-$RANDOM"
