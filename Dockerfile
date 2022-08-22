@@ -1,4 +1,4 @@
-FROM eeacms/plone:5.2.7-19
+FROM eeacms/plone:5.2.9-1
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
 RUN mv /plone/instance/versions.cfg /plone/instance/eea-versions.cfg
