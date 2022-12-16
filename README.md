@@ -1,6 +1,6 @@
 # Plone 5 with RelStorage, RestAPI, Memcached, Graylog, Sentry and more support
-[![Build Status](https://ci.eionet.europa.eu/buildStatus/icon?job=Eionet/eea.docker.plonesaas/master&subject=Build)](https://ci.eionet.europa.eu/blue/organizations/jenkins/Eionet%2Feea.docker.plonesaas/activity/)
-[![Pipeline Status](https://ci.eionet.europa.eu/buildStatus/icon?job=Eionet/eea.pipeline.plone/master&subject=Pipeline)](https://ci.eionet.europa.eu/blue/organizations/jenkins/Eionet%2Feea.pipeline.plone/activity/)
+[![Build Status](https://ci.eionet.europa.eu/buildStatus/icon?job=plone/eea.docker.plonesaas/master&subject=Build)](https://ci.eionet.europa.eu/blue/organizations/jenkins/plone%2Feea.docker.plonesaas/activity/)
+[![Pipeline Status](https://ci.eionet.europa.eu/buildStatus/icon?job=plone/eea.pipeline.plone/master&subject=Pipeline)](https://ci.eionet.europa.eu/blue/organizations/jenkins/plone%2Feea.pipeline.plone/activity/)
 [![Release](https://img.shields.io/github/release/eea/eea.docker.plonesaas)](https://github.com/eea/eea.docker.plonesaas/releases)
 
 Plone 5 with built-in support for:
