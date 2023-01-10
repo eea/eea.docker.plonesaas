@@ -37,3 +37,5 @@ echo "========================================================================="
 
 find /data  -not -user plone -exec chown plone:plone {} \+
 find /plone -not -user plone -exec chown plone:plone {} \+
+
+git config --global --add safe.directory '*'
