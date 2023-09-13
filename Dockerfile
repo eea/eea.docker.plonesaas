@@ -5,5 +5,6 @@ RUN mv /plone/instance/versions.cfg /plone/instance/eea-versions.cfg
 
 COPY src/docker/* /
 COPY src/plone/* /plone/instance/
+RUN pip uninstall -y setuptools && pip install setuptools==57.5.0
 
 RUN /docker-setup.sh
