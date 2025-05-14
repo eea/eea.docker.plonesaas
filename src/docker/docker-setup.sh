@@ -23,6 +23,12 @@ apt-get update
 apt-get install -y --no-install-recommends $buildDeps
 
 echo "========================================================================="
+echo "Fixing permissions for packages checked-out in upstream image..."
+echo "========================================================================="
+
+find /plone/instance/src -not -user root -exec chown root:root {} \+
+
+echo "========================================================================="
 echo "Running buildout -c buildout.cfg"
 echo "========================================================================="
 
