@@ -13,6 +13,11 @@ POSTGRES_IMAGE="eeacms/postgres:10.20-3.7"
 zname="postgres-container-$RANDOM-$RANDOM"
 zid="$(docker run -d --name "$zname" -e POSTGRES_DBNAME="datafs zasync" -e POSTGRES_DBUSER=zope -e POSTGRES_DBPASS=zope -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres $POSTGRES_IMAGE)"
 
+# Wait for PostgreSQL to be up
+while ! docker exec "$zid" pg_isready -U plone > /dev/null 2>&1; do
+    sleep "$PLONE_TEST_SLEEP"
+done
+
 # Start Plone as RelStorage Client
 pname="plone-container-$RANDOM-$RANDOM"
 pid="$(docker run -d --name "$pname" --link=$zname:postgres -e ZOPE_MODE=rel_client "$image")"
