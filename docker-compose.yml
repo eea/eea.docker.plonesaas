@@ -107,6 +107,13 @@ services:
       MTP_HOST: "avoinea.com"
       TZ: "Europe/Bucharest"
 
+  volto-blocks-converter:
+    image: eeacms/eea-volto-blocks-converter
+    ports:
+      - 8000:8000
+    environment:
+      TZ: "Europe/Bucharest"
+
   # elastic:
   #   image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.2
   #   environment:
