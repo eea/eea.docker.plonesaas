@@ -1,0 +1,280 @@
+{
+  "@components": {
+    "actions": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@actions"
+    }, 
+    "aliases": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@aliases"
+    }, 
+    "breadcrumbs": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@breadcrumbs"
+    }, 
+    "contextnavigation": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@contextnavigation"
+    }, 
+    "editing.progress": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@editing.progress"
+    }, 
+    "eea.versions": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@eea.versions", 
+      "newer_versions": {
+        "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@newer-versions", 
+        "items": []
+      }, 
+      "older_versions": {
+        "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@older-versions", 
+        "items": []
+      }
+    }, 
+    "layout": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@layout"
+    }, 
+    "navigation": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@navigation"
+    }, 
+    "navroot": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@navroot"
+    }, 
+    "siblings": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@siblings"
+    }, 
+    "subsite": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@subsite"
+    }, 
+    "translations": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@translations"
+    }, 
+    "types": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@types"
+    }, 
+    "workflow": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@workflow"
+    }, 
+    "workflow.progress": {
+      "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release/@workflow.progress"
+    }
+  }, 
+  "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop/demo-press-release", 
+  "@type": "News Item", 
+  "UID": "b6b91631863a4c43a6eba49be4418cb9", 
+  "allow_discussion": false, 
+  "blocks": {
+    "161318c4-28d2-4e0d-85bb-14c4149cccb5": {
+      "@layout": "caeddc94-fd63-4b8a-8316-cb6657af0768", 
+      "@type": "listing", 
+      "block": "b5cd555e-2136-4a21-a245-eaf8febe911c", 
+      "headline": "Our latest press releases", 
+      "headlineTag": "h2", 
+      "itemModel": {
+        "@type": "card", 
+        "callToAction": {
+          "enable": false, 
+          "label": "Read more"
+        }, 
+        "hasDate": true, 
+        "hasDescription": false, 
+        "hasImage": true, 
+        "hasLabel": false, 
+        "hasLink": true, 
+        "hasMetaType": true, 
+        "hasTags": false, 
+        "maxDescription": 2, 
+        "maxTitle": "5", 
+        "styles": {
+          "inverted:bool": false, 
+          "theme:noprefix": ""
+        }, 
+        "titleOnImage": false
+      }, 
+      "query": [], 
+      "querystring": {
+        "b_size": "9", 
+        "limit": "9", 
+        "query": [
+          {
+            "i": "portal_type", 
+            "o": "plone.app.querystring.operation.selection.any", 
+            "v": [
+              "News Item"
+            ]
+          }, 
+          {
+            "i": "review_state", 
+            "o": "plone.app.querystring.operation.selection.any", 
+            "v": [
+              "published"
+            ]
+          }, 
+          {
+            "i": "effective", 
+            "o": "plone.app.querystring.operation.date.beforeToday", 
+            "v": ""
+          }
+        ], 
+        "sort_on": "effective", 
+        "sort_order": "descending", 
+        "sort_order_boolean": true
+      }, 
+      "slidesToScroll": "3", 
+      "slidesToShow": "3", 
+      "styles": {
+        "style_name": null
+      }, 
+      "variation": "cardsCarousel"
+    }, 
+    "2babde74-9cd5-4005-a6e8-eecb56c05f9c": {
+      "@layout": "73523456-bde7-4d0d-bdfb-84289049387a", 
+      "@type": "layoutSettings", 
+      "block": "3a979c6f-e45c-4168-9989-52ad08d480e4", 
+      "fixed": true, 
+      "layout_size": "narrow_view", 
+      "required": true
+    }, 
+    "3433265d-83e4-4e2f-b56f-cab01243f911": {
+      "@layout": "c3e9b58c-2229-4383-aaf6-06c288d16e45", 
+      "@type": "dividerBlock", 
+      "block": "047c43eb-80a1-4073-973d-6b534fcf4f7a", 
+      "hidden": true, 
+      "section": true, 
+      "styles": {}
+    }, 
+    "4bd4ac24-9d6f-4847-b8eb-bef6cef874fb": {
+      "@layout": "1dc7ff13-445f-49a5-8d97-4831d50777d9", 
+      "@type": "description", 
+      "block": "1155de0c-f267-429d-bc42-46e0c1150577", 
+      "fixed": true, 
+      "placeholder": "Add news item description", 
+      "required": true
+    }, 
+    "57cf8bde-2937-44de-9219-9852eb06109a": {
+      "@layout": "7e00ec1b-7a8d-42a4-8d23-1cd07ad9f4d6", 
+      "@type": "title", 
+      "block": "69ed4dde-8a69-4b5c-a0aa-722d5da57d08", 
+      "copyrightIcon": "ri-copyright-line", 
+      "fixed": true, 
+      "hideCreationDate": true, 
+      "hideDownloadButton": true, 
+      "hideModificationDate": true, 
+      "placeholder": "Add news item title", 
+      "required": true, 
+      "styles": {}, 
+      "variation": "default"
+    }, 
+    "75902d87-1666-4be6-ae57-f2c9ee820b3e": {
+      "@layout": "95ad97f3-c76a-4120-aa69-ba93b804ca4b", 
+      "@type": "slate", 
+      "block": "d41a7ec1-071d-4354-8814-6b68c069c092", 
+      "plaintext": "", 
+      "value": [
+        {
+          "children": [
+            {
+              "text": ""
+            }
+          ], 
+          "type": "p"
+        }
+      ]
+    }, 
+    "f3b6d549-e0c3-42d4-81cd-356108287b53": {
+      "@layout": "5f1fb220-280f-4297-b5bc-873dc42d9430", 
+      "@type": "slate", 
+      "block": "430b9efb-4b7e-48c8-8c98-e59ceb5920ea", 
+      "placeholder": "Add news item content", 
+      "plaintext": "", 
+      "value": [
+        {
+          "children": [
+            {
+              "text": ""
+            }
+          ], 
+          "type": "p"
+        }
+      ]
+    }
+  }, 
+  "blocks_layout": {
+    "items": [
+      "57cf8bde-2937-44de-9219-9852eb06109a", 
+      "2babde74-9cd5-4005-a6e8-eecb56c05f9c", 
+      "4bd4ac24-9d6f-4847-b8eb-bef6cef874fb", 
+      "3433265d-83e4-4e2f-b56f-cab01243f911", 
+      "f3b6d549-e0c3-42d4-81cd-356108287b53", 
+      "75902d87-1666-4be6-ae57-f2c9ee820b3e", 
+      "161318c4-28d2-4e0d-85bb-14c4149cccb5"
+    ]
+  }, 
+  "changeNote": "", 
+  "contributors": [], 
+  "contributors_fullname": [], 
+  "created": "2026-09-17T12:46:19+00:00", 
+  "creators": [
+    "2c4ac037-ae5b-4cb6-a6b6-8a557a237f5a"
+  ], 
+  "creators_fullname": [
+    "\ud83c\udf10 Nilesh Gulia"
+  ], 
+  "data_provenance": {}, 
+  "description": "", 
+  "effective": null, 
+  "exclude_from_nav": false, 
+  "expires": null, 
+  "geo_coverage": {
+    "grouped_geolocation": {
+      "groups": [], 
+      "ungrouped": []
+    }
+  }, 
+  "id": "demo-press-release", 
+  "image": null, 
+  "image_caption": null, 
+  "is_folderish": true, 
+  "items": [], 
+  "items_total": 0, 
+  "language": {
+    "title": "English", 
+    "token": "en"
+  }, 
+  "layout": "newsitem_view", 
+  "lock": {
+    "locked": false, 
+    "stealable": true
+  }, 
+  "modified": "2026-09-17T12:46:19+00:00", 
+  "next_item": {}, 
+  "other_organisations": [], 
+  "parent": {
+    "@id": "https://demo-www.eea.europa.eu/en/sandbox/nilesh-gulia-plotly-workshop", 
+    "@type": "Document", 
+    "description": "", 
+    "effective": "1969-12-30T22:00:00+00:00", 
+    "end": null, 
+    "getObjSize": null, 
+    "head_title": null, 
+    "image_field": null, 
+    "image_scales": {}, 
+    "mime_type": null, 
+    "nav_title": null, 
+    "review_state": "private", 
+    "start": null, 
+    "title": "Nilesh Gulia (Plotly workshop)", 
+    "type_title": "Page"
+  }, 
+  "preview_caption": null, 
+  "preview_image": null, 
+  "previous_item": {}, 
+  "publisher": [], 
+  "relatedItems": [], 
+  "review_state": "private", 
+  "rights": "", 
+  "subjects": [], 
+  "temporal_coverage": {}, 
+  "title": "Demo press release", 
+  "topics": [], 
+  "type_title": "Press release", 
+  "version": "current", 
+  "versioning_enabled": true, 
+  "working_copy": null, 
+  "working_copy_of": null
+}
